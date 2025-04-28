@@ -90,7 +90,7 @@ public class Race
            
             //wait for 100 milliseconds
             try{ 
-                TimeUnit.MILLISECONDS.sleep(100);
+                TimeUnit.MILLISECONDS.sleep(400);
             }catch(Exception e){}
         }
     }
