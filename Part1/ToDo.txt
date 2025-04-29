@@ -1,2 +1,0 @@
-1. Review the GUI lecture slides
-2. Create a repository for this project
