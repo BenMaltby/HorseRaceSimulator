@@ -4,8 +4,8 @@ This is a simple Java program that simulates a horse race in the terminal. You c
 
 ## How to Run
 
-1. First, clone the repository (or download the files manually).
-2. Make sure you have Java installed (Java 8 or higher).
+1. First, clone the repository (or download the files).
+2. Make sure you have Java installed.
 3. Open a terminal in the folder where the files are saved.
 
 To compile everything, use this command:
@@ -24,9 +24,9 @@ This program doesn't use any special libraries, just standard Java. So you don't
 
 Once you run the program, it will ask you some questions:
 
-- How long the race track should be (just a number)
-- How many lanes there should be (like 3, 4, 5, etc.)
-- For each lane, you can give the horse a name, a symbol (like a letter or emoji), and a confidence level between 0.0 and 1.0
+- How long the race track should be (just a number usually between 10 and 40 for short to long races)
+- How many lanes there should be
+- For each lane, you can give the horse a name, a symbol, and a confidence level between 0 and 1
 
 If you leave the name blank, no horse will be placed in that lane.
 
