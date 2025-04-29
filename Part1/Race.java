@@ -42,61 +42,68 @@ public class Race {
      * Start the race simulation
      */
     public void startRace() {
-        // Validate that all lanes have horses
-        for (int i = 0; i < lanes.size(); i++) {
-            if (lanes.get(i) == null) {
-                System.out.println("Lane " + (i + 1) + " is empty. All lanes must have horses.");
-                return;
+        boolean anyHorsePresent = false;
+        for (Horse horse : lanes) {
+            if (horse != null) {
+                horse.goBackToStart();
+                anyHorsePresent = true;
             }
         }
-
-        // Reset all horses
-        for (Horse horse : lanes) {
-            horse.goBackToStart();
+    
+        if (!anyHorsePresent) {
+            System.out.println("🚫 No horses in the race. Add at least one horse.");
+            return;
         }
-
+    
         boolean finished = false;
         Horse winner = null;
-
+    
         while (!finished) {
             for (Horse horse : lanes) {
-                moveHorse(horse);
+                if (horse != null) {
+                    moveHorse(horse);
+                }
             }
-
+    
             printRace();
-
+    
             for (Horse horse : lanes) {
-                if (raceWonBy(horse)) {
+                if (horse != null && raceWonBy(horse)) {
                     winner = horse;
                     finished = true;
                     break;
                 }
             }
-
+    
             if (!finished && allHorsesFallen()) {
                 System.out.println("\n☠️ All horses have fallen! The race ends with no winner.");
                 return;
             }
-
+    
             try {
-                TimeUnit.MILLISECONDS.sleep(200);
-            } catch (Exception e) {
-            }
+                TimeUnit.MILLISECONDS.sleep(100);
+            } catch (Exception e) {}
         }
-
+    
         if (winner != null) {
+            winner.setConfidence(winner.getConfidence() + 0.1); // Increase confidence on win
+            printRace();
             System.out.println("\n🏁 The winner is: " + winner.getName() + "!");
         }
     }
 
     private boolean allHorsesFallen() {
+        boolean foundHorse = false;
         for (Horse horse : lanes) {
-            if (!horse.hasFallen()) {
-                return false;
+            if (horse != null) {
+                foundHorse = true;
+                if (!horse.hasFallen()) {
+                    return false;
+                }
             }
         }
-        return true;
-    }
+        return foundHorse; // only true if there were horses and all are fallen
+    }    
 
     private void moveHorse(Horse horse) {
         if (!horse.hasFallen()) {
@@ -106,6 +113,7 @@ public class Race {
 
             if (Math.random() < (0.1 * horse.getConfidence() * horse.getConfidence())) {
                 horse.fall();
+                horse.setConfidence(horse.getConfidence() - 0.1); // Decrease confidence on fall
             }
         }
     }
@@ -115,35 +123,51 @@ public class Race {
     }
 
     private void printRace() {
-        System.out.print('\u000C'); // clear terminal
+        System.out.print('\u000C'); // Clear terminal
         multiplePrint('=', raceLength + 3);
         System.out.println();
-
+    
         for (Horse horse : lanes) {
-            printLane(horse);
-            System.out.println();
+            if (horse != null) {
+                printLane(horse);
+            } else {
+                System.out.println("|" + " ".repeat(raceLength) + " |  [Empty Lane]");
+            }
         }
-
+    
         multiplePrint('=', raceLength + 3);
         System.out.println();
     }
-
+    
     private void printLane(Horse horse) {
         int spacesBefore = horse.getDistanceTravelled();
         int spacesAfter = raceLength - horse.getDistanceTravelled();
         if (spacesAfter < 0) spacesAfter = 0;
-
+    
+        // Start of the lane
         System.out.print('|');
+    
+        // Spaces before the horse
         multiplePrint(' ', spacesBefore);
-
+    
+        // Horse symbol or fallen mark
         if (horse.hasFallen()) {
-            System.out.print('X'); // fallen symbol
+            System.out.print('X'); // Fallen mark
         } else {
             System.out.print(horse.getSymbol());
         }
-
+    
+        // Spaces after the horse
         multiplePrint(' ', spacesAfter);
+    
+        // End of the lane
         System.out.print('|');
+    
+        // Display horse name and confidence
+        String name = horse.getName();
+        double confidence = horse.getConfidence();
+    
+        System.out.println("  " + name + " | Confidence: " + String.format("%.2f", confidence));
     }
 
     private void multiplePrint(char c, int times) {

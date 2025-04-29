@@ -27,11 +27,11 @@ public class Testing {
         horse1.goBackToStart();
         System.out.println("Distance Travelled after going back to start: " + horse1.getDistanceTravelled()); // Expected: 0
 
-        Race race = new Race(10, 4); // 4-lane race
+        Race race = new Race(20, 4); // 4-lane race
 
         race.addHorse(new Horse('♞', "BLAZE", 0.9), 1);
         race.addHorse(new Horse('♘', "STORM", 0.85), 2);
-        race.addHorse(new Horse('⍟', "THUNDER", 0.8), 3);
+        // race.addHorse(new Horse('⍟', "THUNDER", 0.8), 3);
         race.addHorse(new Horse('Δ', "COMET", 0.75), 4);
 
         race.startRace();
