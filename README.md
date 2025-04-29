@@ -23,13 +23,6 @@ Follow these steps to run the project locally:
    java Main
    ```
 
-## 📦 Dependencies
-
-This project uses only standard Java libraries — no external dependencies required.
-
-- **Java Version Required**: Java 8 or higher  
-- **Tested on**: OpenJDK 11, Oracle JDK 17
-
 > ✅ No installation of third-party libraries needed.
 
 ## 📝 Usage Guidelines
@@ -54,11 +47,3 @@ The race will begin and display progress in your terminal. Horses may **move**, 
 - `Main.java` – Entry point for the program and user interface.
 - `Race.java` – Handles race logic, movement, and display.
 - `Horse.java` – Defines the Horse class and performance behavior.
-
-## 🤝 Contributions
-
-Contributions are welcome! Feel free to fork the repo and submit a pull request with improvements.
-
-## 📃 License
-
-This project is open source and free to use for educational purposes.
