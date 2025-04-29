@@ -2,6 +2,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * A three-horse race, each horse running in its own lane
+ * for a given distance
+ * 
+ * @author McRaceface
+ * @version 1.0
+ */
 public class Race {
     private int raceLength;
     private List<Horse> lanes;
@@ -16,7 +23,7 @@ public class Race {
         raceLength = distance;
         lanes = new ArrayList<>(numLanes);
 
-        // Initialize all lanes as empty (null)
+        // Create all empty lanes
         for (int i = 0; i < numLanes; i++) {
             lanes.add(null);
         }
@@ -38,9 +45,6 @@ public class Race {
         }
     }
 
-    /**
-     * Start the race simulation
-     */
     public void startRace() {
         boolean anyHorsePresent = false;
         for (Horse horse : lanes) {
@@ -58,6 +62,7 @@ public class Race {
         boolean finished = false;
         Horse winner = null;
     
+        // Keep running until a horse wins or all horses fall
         while (!finished) {
             for (Horse horse : lanes) {
                 if (horse != null) {
@@ -152,7 +157,7 @@ public class Race {
     
         // Horse symbol or fallen mark
         if (horse.hasFallen()) {
-            System.out.print('X'); // Fallen mark
+            System.out.print('X');
         } else {
             System.out.print(horse.getSymbol());
         }
