@@ -1,3 +1,4 @@
+import java.lang.Math;
 
 /**
  * Write a description of class Horse here.
@@ -59,7 +60,7 @@ public class Horse
     }
 
     public void setConfidence(double newConfidence) {
-        confidence = newConfidence;
+        confidence = Math.min(1, Math.max(0, newConfidence)); // Clamp newConfidence between 0 and 1
     }
 
     public void setSymbol(char newSymbol) {
