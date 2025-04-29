@@ -1,49 +1,41 @@
-# 🐎 Horse Racing Simulator
+# Horse Racing Simulator
 
-A simple console-based Horse Racing Simulator written in Java. Users can set up a custom race, assign horses with unique names and attributes, and watch them compete in real-time!
+This is a simple Java program that simulates a horse race in the terminal. You can set up your own race, give horses names and symbols, and watch them compete.
 
-## 🚀 Project Setup Instructions
+## How to Run
 
-Follow these steps to run the project locally:
+1. First, clone the repository (or download the files manually).
+2. Make sure you have Java installed (Java 8 or higher).
+3. Open a terminal in the folder where the files are saved.
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/your-username/horse-racing-simulator.git
-   cd horse-racing-simulator
-   ```
+To compile everything, use this command:
 
-2. **Compile the Java files**:  
-   Ensure all `.java` files (`Main.java`, `Race.java`, `Horse.java`) are in the same directory. Then run:
-   ```bash
-   javac *.java
-   ```
+    javac *.java
 
-3. **Run the program**:
-   ```bash
-   java Main
-   ```
+Then to run the program:
 
-> ✅ No installation of third-party libraries needed.
+    java Main
 
-## 📝 Usage Guidelines
+## What You Need
 
-After launching the program (`java Main`), follow the interactive prompts to:
+This program doesn't use any special libraries, just standard Java. So you don't need to install anything extra.
 
-1. Set the **race length** (e.g., 20).
-2. Choose the **number of lanes** (e.g., 3 to 5).
-3. For each lane:
-   - Enter the horse’s **name**
-   - Enter a **symbol** (a single character like 🐎, X, etc.)
-   - Enter the **confidence level** (between 0.0 and 1.0)
-   - You can **leave the name blank** to skip assigning a horse to that lane
+## How It Works
 
-The race will begin and display progress in your terminal. Horses may **move**, **fall**, or **win**, and their **confidence adjusts based on performance**:
+Once you run the program, it will ask you some questions:
 
-- ✅ Winning slightly **increases** confidence  
-- ❌ Falling slightly **decreases** confidence
+- How long the race track should be (just a number)
+- How many lanes there should be (like 3, 4, 5, etc.)
+- For each lane, you can give the horse a name, a symbol (like a letter or emoji), and a confidence level between 0.0 and 1.0
 
-## 📂 Files Included
+If you leave the name blank, no horse will be placed in that lane.
 
-- `Main.java` – Entry point for the program and user interface.
-- `Race.java` – Handles race logic, movement, and display.
-- `Horse.java` – Defines the Horse class and performance behavior.
+The horses will move forward or fall depending on their confidence. If a horse wins, its confidence goes up a bit. If it falls, it goes down slightly.
+
+## Files in the Project
+
+- Main.java - This is where the program starts and where you set up the race.
+- Race.java - This handles how the race works, like moving horses and checking who won.
+- Horse.java - This defines what a horse is and how it behaves.
+
+That's pretty much it. You can play around with it and change how the race works if you want.
