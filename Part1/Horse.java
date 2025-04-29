@@ -17,6 +17,9 @@ public class Horse
     private double confidence;
       
     //Constructor of class Horse
+    /**
+     * Constructor for objects of class Horse
+     */
     public Horse(char horseSymbol, String horseName, double horseConfidence) {
         symbol = horseSymbol;
         name = horseName;
@@ -60,7 +63,8 @@ public class Horse
     }
 
     public void setConfidence(double newConfidence) {
-        confidence = Math.min(1, Math.max(0, newConfidence)); // Clamp newConfidence between 0 and 1
+        // Clamp newConfidence between 0 and 1
+        confidence = Math.min(1, Math.max(0, newConfidence));
     }
 
     public void setSymbol(char newSymbol) {
