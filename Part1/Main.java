@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Testing {
+public class Main {
     public static void main(String[] args) {
         // function testing
         System.out.println("Running basic tests...");
